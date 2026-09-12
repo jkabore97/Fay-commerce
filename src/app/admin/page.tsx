@@ -70,7 +70,10 @@ export default async function AdminDashboard() {
   const low = lowRes.data ?? [];
   const quotes = quotesRes.data ?? [];
   const sales = salesRes.data ?? [];
-  const rep = (report?.data as { revenue: number; margin: number } | null) ?? null;
+  // sales_report() is a set-returning function → data is a one-row array.
+  const rep =
+    ((report?.data as { revenue: number; margin: number }[] | null) ?? [])[0] ??
+    null;
 
   return (
     <div className="space-y-6">

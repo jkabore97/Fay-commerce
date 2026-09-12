@@ -55,7 +55,11 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) setItems(JSON.parse(raw));
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        // Guard against a corrupt/legacy value that parses to a non-array.
+        if (Array.isArray(parsed)) setItems(parsed);
+      }
     } catch {
       /* ignore */
     }

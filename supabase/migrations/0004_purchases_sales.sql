@@ -241,6 +241,7 @@ declare
     v_actor  uuid := auth.uid();
     v_method text; v_total numeric; v_kind text; v_customer text;
     v_return uuid; v_line record; v_entry uuid;
+    v_income uuid; v_cash uuid;
 begin
     if not is_staff() then raise exception 'Réservé au personnel'; end if;
     select method, total, kind, customer_name into v_method, v_total, v_kind, v_customer
@@ -266,10 +267,21 @@ begin
     end loop;
 
     if v_total > 0 then
-        v_entry := post_ledger_entry(
-            p_amount => v_total, p_direction => 'out', p_label => 'Retour de vente',
-            p_actor => v_actor, p_category => 'Ventes', p_method => v_method,
-            p_memo => p_note, p_details => jsonb_build_object('reverses', p_sale_id));
+        -- A sales return is contra-revenue, not an expense. Debit the SAME
+        -- income account the sale credited (reducing revenue) and credit the
+        -- cash it is refunded from. Routing this through post_ledger_entry with
+        -- direction 'out' would instead mint a phantom EXPENSE account named
+        -- 'Ventes', leaving gross revenue overstated and two accounts of the
+        -- same name — so post the balanced entry directly here.
+        v_income := ensure_account('Ventes', 'income', v_actor);
+        v_cash   := resolve_cash_account(v_method, v_actor);
+        insert into journal_entries (label, memo, details, created_by, occurred_at, created_at)
+        values ('Retour de vente', p_note,
+                jsonb_build_object('reverses', p_sale_id), v_actor, now(), now())
+        returning id into v_entry;
+        insert into journal_lines (journal_entry_id, account_id, debit, credit) values
+            (v_entry, v_income, v_total, 0),
+            (v_entry, v_cash,   0,       v_total);
         update sales set entry_id = v_entry where id = v_return;
     end if;
     return v_return;
@@ -289,8 +301,13 @@ language sql stable security definer set search_path = public, auth as $$
         coalesce(sum(s.total) filter (where s.kind = 'sale'), 0)
           - coalesce(sum(s.total) filter (where s.kind = 'return'), 0),
         count(*) filter (where s.kind = 'sale')::int,
-        coalesce((select sum(l.quantity) from sale_lines l join sales s2 on s2.id = l.sale_id
-                  where s2.kind = 'sale' and (s2.occurred_at at time zone 'UTC')::date = p_on), 0)
+        -- Guarded independently: this scalar subquery is evaluated even when the
+        -- outer `where is_staff()` filters every row, so a non-staff caller must
+        -- not learn the day's volume through it.
+        case when is_staff() then
+            coalesce((select sum(l.quantity) from sale_lines l join sales s2 on s2.id = l.sale_id
+                      where s2.kind = 'sale' and (s2.occurred_at at time zone 'UTC')::date = p_on), 0)
+        else 0 end
     from sales s
     where is_staff() and (s.occurred_at at time zone 'UTC')::date = p_on;
 $$;

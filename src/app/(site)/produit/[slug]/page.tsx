@@ -73,6 +73,7 @@ export default async function ProductPage({
 
         <div className="mt-6 grid gap-10 lg:grid-cols-2">
           <ProductGallery
+            key={product.slug}
             image={product.image_url}
             gallery={product.gallery}
             alt={product.name}
