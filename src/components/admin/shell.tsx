@@ -25,7 +25,7 @@ import {
 import { Logo } from "@/components/brand/logo";
 import { createClient } from "@/lib/supabase/client";
 import { cn, initials } from "@/lib/utils";
-import { ROLE_LABELS } from "@/lib/auth";
+import { ROLE_LABELS } from "@/lib/constants";
 import type { Role } from "@/lib/types";
 
 interface NavItem {

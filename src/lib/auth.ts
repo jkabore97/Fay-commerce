@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/env";
-import type { Role, Staff } from "@/lib/types";
+import type { Staff } from "@/lib/types";
 
 /**
  * The signed-in staff member for the current request, or null.
@@ -48,7 +48,7 @@ export function isAdmin(staff: Staff | null): staff is Staff & { role: "admin" }
   return staff?.role === "admin";
 }
 
-export const ROLE_LABELS: Record<Role, string> = {
-  admin: "Administrateur",
-  employee: "Employé",
-};
+// Re-exported for server-side convenience. Client components must import
+// ROLE_LABELS from "@/lib/constants" directly (this module pulls in the
+// server-only Supabase client and cannot be bundled for the browser).
+export { ROLE_LABELS } from "@/lib/constants";

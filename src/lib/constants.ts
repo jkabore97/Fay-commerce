@@ -1,6 +1,16 @@
-import type { AccountType, QuoteStatus, StockMovementKind } from "@/lib/types";
+import type {
+  AccountType,
+  QuoteStatus,
+  Role,
+  StockMovementKind,
+} from "@/lib/types";
 
 type Tone = "neutral" | "brass" | "steel" | "green" | "red" | "amber" | "blue";
+
+export const ROLE_LABELS: Record<Role, string> = {
+  admin: "Administrateur",
+  employee: "Employé",
+};
 
 export const QUOTE_STATUS: Record<QuoteStatus, { label: string; tone: Tone }> = {
   new: { label: "Nouveau", tone: "blue" },
