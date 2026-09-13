@@ -13,8 +13,27 @@ export const SUPABASE_SERVICE_ROLE_KEY =
 export const MEDIA_BUCKET =
   process.env.NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET ?? "media";
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+/**
+ * Normalise NEXT_PUBLIC_SITE_URL into a valid absolute URL string.
+ *
+ * A value like `fay-commerce.vercel.app` (no scheme) is a common mistake, and
+ * `new URL()` throws on it — which would crash prerendering of every page at
+ * build time (metadataBase). So we prepend https:// when the scheme is missing
+ * and fall back to localhost if the value is unusable. The build must never
+ * fail because of a mistyped env var.
+ */
+function normalizeSiteUrl(raw: string | undefined): string {
+  const value = (raw ?? "").trim();
+  if (!value) return "http://localhost:3000";
+  const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  try {
+    return new URL(withScheme).origin;
+  } catch {
+    return "http://localhost:3000";
+  }
+}
+
+export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const SITE_NAME = "Fay & Partenaires";
 
