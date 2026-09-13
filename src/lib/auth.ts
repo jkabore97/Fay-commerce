@@ -30,11 +30,31 @@ export async function getCurrentStaff(): Promise<Staff | null> {
   return (data as Staff | null) ?? null;
 }
 
-/** Redirect to the login page unless a valid staff member is signed in. */
+/**
+ * Guard for the back-office. Redirects:
+ *  - to /login              when nobody is signed in
+ *  - to /login?denied=1     when signed in but with no active staff row
+ *    (so the login page can explain the account isn't linked to staff access —
+ *     the common "I created an admin but it doesn't work" case)
+ */
 export async function requireStaff(): Promise<Staff> {
-  const staff = await getCurrentStaff();
-  if (!staff) redirect("/login");
-  return staff;
+  if (!isSupabaseConfigured()) redirect("/login");
+
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
+
+  const { data } = await supabase
+    .from("staff")
+    .select("*")
+    .eq("id", user.id)
+    .eq("is_active", true)
+    .maybeSingle();
+
+  if (!data) redirect("/login?denied=1");
+  return data as Staff;
 }
 
 /** Redirect employees away from admin-only areas. */

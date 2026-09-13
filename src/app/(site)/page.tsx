@@ -62,7 +62,7 @@ export default async function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <Reveal>
-                <span className="chevron-tag">
+                <span className="chevron-tag accent">
                   <BadgeCheck className="h-4 w-4" />
                   {hero.eyebrow}
                 </span>

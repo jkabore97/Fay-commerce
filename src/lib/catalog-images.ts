@@ -4,7 +4,8 @@
 // An image an admin uploads later always takes precedence over these.
 
 export const SITE_IMAGES = {
-  logo: "/brand/logo.jpg",
+  logo: "/brand/logo.jpg", // original artwork on white — for light surfaces
+  logoLight: "/brand/logo-transparent.png", // transparent — for dark surfaces
   hero: "/catalog/hero.jpg",
   about: "/catalog/about.jpg",
 } as const;
