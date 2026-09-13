@@ -6,6 +6,7 @@ import { FayMark } from "@/components/brand/logo";
 import { Reveal, RevealGroup } from "@/components/motion/reveal";
 import { DynamicIcon } from "@/components/icons";
 import { getSiteContent } from "@/lib/queries";
+import { mediaUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "À propos",
@@ -15,6 +16,9 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const { about, home } = await getSiteContent();
+  const aboutImg = about.image_url?.startsWith("/")
+    ? about.image_url
+    : mediaUrl(about.image_url);
 
   return (
     <>
@@ -23,7 +27,7 @@ export default async function AboutPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <Reveal>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-brass-400">
+                <p className="text-sm font-semibold uppercase tracking-wider text-cobalt-400">
                   Depuis {about.founded_year}
                 </p>
                 <h1 className="mt-3 font-display text-4xl font-extrabold text-white sm:text-5xl">
@@ -33,8 +37,22 @@ export default async function AboutPage() {
               </div>
             </Reveal>
             <Reveal delay={1}>
-              <div className="relative flex items-center justify-center">
-                <FayMark className="h-56 w-56 text-brass-500/90 animate-spin-slow" />
+              <div className="relative">
+                {aboutImg ? (
+                  <img
+                    src={aboutImg}
+                    alt="Boulonnerie et fixations Fay & Partenaires"
+                    className="w-full rotate-2 rounded-2xl border-4 border-white object-cover shadow-2xl"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center">
+                    <FayMark className="h-56 w-56 text-cobalt-500/90 animate-spin-slow" />
+                  </div>
+                )}
+                <div
+                  className="pointer-events-none absolute -bottom-5 -left-5 h-24 w-24 bg-cobalt-500"
+                  style={{ clipPath: "polygon(0 100%, 0 0, 100% 100%)" }}
+                />
               </div>
             </Reveal>
           </div>
@@ -47,7 +65,7 @@ export default async function AboutPage() {
           <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
             {about.stats.map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-display text-4xl font-extrabold text-brass-600">
+                <p className="font-display text-4xl font-extrabold text-cobalt-600">
                   {s.value}
                 </p>
                 <p className="mt-1 text-sm font-medium text-steel-500">{s.label}</p>
@@ -78,7 +96,7 @@ export default async function AboutPage() {
                 {about.materials.map((m) => (
                   <Reveal key={m} as="div">
                     <div className="flex items-center gap-2.5 rounded-xl border border-steel-100 bg-white px-4 py-3 text-sm font-medium text-steel-700 shadow-card">
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-brass-500" />
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-cobalt-500" />
                       {m}
                     </div>
                   </Reveal>
@@ -102,7 +120,7 @@ export default async function AboutPage() {
             {home.sectors.map((s) => (
               <Reveal key={s.name} as="div">
                 <div className="flex items-center gap-4 rounded-2xl border border-steel-100 bg-white p-5 shadow-card">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brass-50 text-brass-600">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cobalt-50 text-cobalt-600">
                     <DynamicIcon name={s.icon} className="h-6 w-6" />
                   </div>
                   <span className="font-semibold text-steel-800">{s.name}</span>

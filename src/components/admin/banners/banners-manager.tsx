@@ -24,8 +24,8 @@ import type { Banner } from "@/lib/types";
 
 type BannerKind = "promo" | "hero_slide";
 
-const KIND_META: Record<BannerKind, { label: string; tone: "brass" | "blue" }> = {
-  promo: { label: "Promotion", tone: "brass" },
+const KIND_META: Record<BannerKind, { label: string; tone: "cobalt" | "blue" }> = {
+  promo: { label: "Promotion", tone: "cobalt" },
   hero_slide: { label: "Slide accueil", tone: "blue" },
 };
 
@@ -413,7 +413,7 @@ export function BannersManager({ banners }: { banners: Banner[] }) {
                   onChange={(e) =>
                     setForm((f) => ({ ...f, is_active: e.target.checked }))
                   }
-                  className="h-4 w-4 accent-brass-500"
+                  className="h-4 w-4 accent-cobalt-500"
                 />
                 Active (visible sur la vitrine)
               </label>

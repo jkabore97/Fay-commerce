@@ -66,12 +66,12 @@ export function Stat({
   value: React.ReactNode;
   sub?: React.ReactNode;
   icon?: React.ReactNode;
-  tone?: "steel" | "brass" | "green" | "red";
+  tone?: "steel" | "cobalt" | "green" | "red";
   className?: string;
 }) {
   const tones = {
     steel: "text-steel-500 bg-steel-100",
-    brass: "text-brass-700 bg-brass-100",
+    cobalt: "text-cobalt-700 bg-cobalt-100",
     green: "text-emerald-700 bg-emerald-100",
     red: "text-red-600 bg-red-100",
   };
@@ -147,9 +147,9 @@ export function SectionHeading({
   return (
     <div className={cn(center && "mx-auto text-center", "max-w-2xl", className)}>
       {eyebrow && (
-        <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-brass-600">
-          {eyebrow}
-        </p>
+        <div className={cn("mb-3", center && "flex justify-center")}>
+          <span className="chevron-tag">{eyebrow}</span>
+        </div>
       )}
       <h2 className="font-display text-3xl font-bold text-steel-900 sm:text-4xl">
         {title}

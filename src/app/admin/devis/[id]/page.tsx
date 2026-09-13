@@ -66,7 +66,7 @@ export default async function DevisDetailPage({
               <Info label="Téléphone">
                 <a
                   href={`tel:${q.phone}`}
-                  className="font-medium text-brass-700 hover:text-brass-800"
+                  className="font-medium text-cobalt-700 hover:text-cobalt-800"
                 >
                   {q.phone}
                 </a>
@@ -75,7 +75,7 @@ export default async function DevisDetailPage({
                 {q.email ? (
                   <a
                     href={`mailto:${q.email}`}
-                    className="break-all font-medium text-brass-700 hover:text-brass-800"
+                    className="break-all font-medium text-cobalt-700 hover:text-cobalt-800"
                   >
                     {q.email}
                   </a>

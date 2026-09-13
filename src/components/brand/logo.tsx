@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SITE_IMAGES } from "@/lib/catalog-images";
 
-/** The Fay mark: a hex nut with a bolt-slot, drawn in brass. */
+/** Decorative hex-nut mark (used for spinners, watermarks, placeholders). */
 export function FayMark({
   className,
   spinning = false,
@@ -26,34 +27,38 @@ export function FayMark({
   );
 }
 
+/**
+ * The brand lockup — the actual Fay & Partenaires logo from the brochure.
+ * On a dark surface (`variant="light"`) it sits inside a white chip, echoing
+ * the framed "stamp" treatment on the brochure cover.
+ */
 export function Logo({
   variant = "dark",
   className,
   href = "/",
-  showText = true,
 }: {
   variant?: "dark" | "light";
   className?: string;
   href?: string | null;
+  /** Deprecated: the logo image already contains the wordmark. */
   showText?: boolean;
 }) {
-  const textColor = variant === "light" ? "text-white" : "text-steel-900";
-  const subColor = variant === "light" ? "text-steel-200" : "text-steel-500";
-
+  const chip = variant === "light";
+  const img = (
+    <img
+      src={SITE_IMAGES.logo}
+      alt="Fay & Partenaires"
+      className="h-9 w-auto sm:h-10"
+    />
+  );
   const inner = (
-    <span className={cn("group inline-flex items-center gap-2.5", className)}>
-      <span className="relative inline-flex h-9 w-9 items-center justify-center">
-        <FayMark className="h-9 w-9 text-brass-500 transition-transform duration-500 group-hover:rotate-90" />
-      </span>
-      {showText && (
-        <span className="flex flex-col leading-none">
-          <span className={cn("font-display text-lg font-extrabold tracking-tight", textColor)}>
-            FAY<span className="text-brass-500"> &amp; </span>Partenaires
-          </span>
-          <span className={cn("text-[10px] font-semibold uppercase tracking-[0.18em]", subColor)}>
-            Boulonnerie · depuis 1998
-          </span>
+    <span className={cn("inline-flex items-center", className)}>
+      {chip ? (
+        <span className="inline-flex items-center rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+          {img}
         </span>
+      ) : (
+        img
       )}
     </span>
   );

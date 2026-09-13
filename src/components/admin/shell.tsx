@@ -134,7 +134,7 @@ export function AdminShell({
                       className={cn(
                         "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
                         active
-                          ? "bg-brass-500 text-white shadow-sm"
+                          ? "bg-cobalt-500 text-white shadow-sm"
                           : "text-steel-300 hover:bg-steel-800 hover:text-white",
                       )}
                     >
@@ -202,7 +202,7 @@ export function AdminShell({
                 </p>
                 <p className="text-xs text-steel-500">{ROLE_LABELS[role]}</p>
               </div>
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-steel-900 text-sm font-bold text-brass-400">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-steel-900 text-sm font-bold text-cobalt-400">
                 {initials(fullName)}
               </div>
             </div>

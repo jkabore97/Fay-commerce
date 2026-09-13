@@ -64,7 +64,7 @@ export default async function StockPage() {
             value={formatMoney((invValue?.data as number) ?? 0)}
             sub="au prix d'achat"
             icon={<Warehouse className="h-5 w-5" />}
-            tone="brass"
+            tone="cobalt"
           />
         )}
       </div>

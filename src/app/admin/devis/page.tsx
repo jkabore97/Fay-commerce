@@ -84,7 +84,7 @@ export default async function DevisPage({
                   <TD>
                     <Link
                       href={`/admin/devis/${q.id}`}
-                      className="font-mono text-sm font-semibold text-brass-700 hover:text-brass-800"
+                      className="font-mono text-sm font-semibold text-cobalt-700 hover:text-cobalt-800"
                     >
                       {q.ref}
                     </Link>
@@ -159,7 +159,7 @@ function FilterChip({
       className={cn(
         "inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors",
         active
-          ? "bg-brass-500 text-white shadow-sm"
+          ? "bg-cobalt-500 text-white shadow-sm"
           : "border border-steel-200 bg-white text-steel-600 hover:border-steel-300 hover:bg-steel-50",
       )}
     >

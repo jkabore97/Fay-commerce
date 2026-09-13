@@ -5,7 +5,7 @@ import type { Config } from "tailwindcss";
  *
  * The brand is industrial hardware: graphite steel + a warm zinc-amber accent.
  * Steel ("acier") is the primary/navy scale used for structure and the admin
- * chrome; amber ("laiton", brass) is the single accent that drives CTAs and
+ * chrome; amber ("laiton", cobalt) is the single accent that drives CTAs and
  * highlights. Everything else is a neutral zinc grey so product photos and the
  * accent do the talking.
  */
@@ -31,18 +31,24 @@ const config: Config = {
           900: "#12233a",
           950: "#0b1626",
         },
-        brass: {
-          50: "#fef8ec",
-          100: "#fbeac6",
-          200: "#f7d489",
-          300: "#f3bb4c",
-          400: "#f0a423",
-          500: "#e08511",
-          600: "#c5630b",
-          700: "#a4450d",
-          800: "#863612",
-          900: "#6f2e12",
-          950: "#401507",
+        // Electric blue sampled from the Fay & Partenaires brochure (#233CFF).
+        cobalt: {
+          50: "#eef1ff",
+          100: "#dfe4ff",
+          200: "#c4ccff",
+          300: "#9aa6ff",
+          400: "#6a78ff",
+          500: "#233cff",
+          600: "#1c2ee6",
+          700: "#1a27bd",
+          800: "#1a2597",
+          900: "#1b2678",
+          950: "#111445",
+        },
+        mint: {
+          50: "#f4f9f4",
+          100: "#ebf4eb",
+          200: "#dcecdd",
         },
       },
       fontFamily: {

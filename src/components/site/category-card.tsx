@@ -1,37 +1,43 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { CategoryIcon } from "@/components/icons";
-import { mediaUrl } from "@/lib/utils";
+import { ProductImage } from "./product-image";
+import { categoryImageFallback } from "@/lib/catalog-images";
 import type { Category } from "@/lib/types";
 
 export function CategoryCard({ category }: { category: Category }) {
-  const img = mediaUrl(category.image_url);
   return (
     <Link
       href={`/catalogue/${category.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-steel-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brass-200 hover:shadow-card-hover"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-steel-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-cobalt-200 hover:shadow-card-hover"
     >
-      {img && (
-        <img
-          src={img}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-10"
+      <div className="relative border-b border-steel-100">
+        <ProductImage
+          src={category.image_url}
+          fallbackSrc={categoryImageFallback(category.slug)}
+          fit="contain"
+          alt={category.name}
+          categorySlug={category.slug}
+          rounded="rounded-none"
+          className="aspect-[4/3] w-full"
         />
-      )}
-      <div className="relative flex items-center justify-between">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-steel-900 text-brass-500 transition-colors group-hover:bg-brass-500 group-hover:text-white">
-          <CategoryIcon slug={category.slug} className="h-7 w-7" />
-        </div>
-        <ArrowUpRight className="h-5 w-5 text-steel-300 transition-all group-hover:text-brass-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <span className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cobalt-500 text-white shadow-md">
+          <CategoryIcon slug={category.slug} className="h-5 w-5" />
+        </span>
       </div>
-      <h3 className="relative mt-5 font-display text-lg font-bold text-steel-900">
-        {category.name}
-      </h3>
-      {category.description && (
-        <p className="relative mt-1.5 line-clamp-2 text-sm text-steel-500">
-          {category.description}
-        </p>
-      )}
+      <div className="flex flex-1 flex-col p-5">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="font-display text-lg font-bold text-steel-900 transition-colors group-hover:text-cobalt-700">
+            {category.name}
+          </h3>
+          <ArrowUpRight className="h-5 w-5 shrink-0 text-steel-300 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cobalt-500" />
+        </div>
+        {category.description && (
+          <p className="mt-1.5 line-clamp-2 text-sm text-steel-500">
+            {category.description}
+          </p>
+        )}
+      </div>
     </Link>
   );
 }

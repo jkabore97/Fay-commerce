@@ -252,7 +252,7 @@ export function ProductsManager({
                       {p.is_active ? "Actif" : "Inactif"}
                     </Badge>
                     {p.is_featured && (
-                      <Badge tone="brass">
+                      <Badge tone="cobalt">
                         <Star className="h-3 w-3" /> Vedette
                       </Badge>
                     )}

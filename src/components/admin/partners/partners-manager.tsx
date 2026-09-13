@@ -176,7 +176,7 @@ export function PartnersManager({ partners }: { partners: Partner[] }) {
                         href={p.link_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-0.5 inline-flex max-w-full items-center gap-1 text-xs text-brass-600 hover:text-brass-700"
+                        className="mt-0.5 inline-flex max-w-full items-center gap-1 text-xs text-cobalt-600 hover:text-cobalt-700"
                       >
                         <ExternalLink className="h-3 w-3 shrink-0" />
                         <span className="truncate">{p.link_url}</span>
@@ -309,7 +309,7 @@ export function PartnersManager({ partners }: { partners: Partner[] }) {
                   onChange={(e) =>
                     setForm((f) => ({ ...f, is_active: e.target.checked }))
                   }
-                  className="h-4 w-4 accent-brass-500"
+                  className="h-4 w-4 accent-cobalt-500"
                 />
                 Actif (visible sur la vitrine)
               </label>

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 type Tone =
   | "neutral"
-  | "brass"
+  | "cobalt"
   | "steel"
   | "green"
   | "red"
@@ -11,7 +11,7 @@ type Tone =
 
 const tones: Record<Tone, string> = {
   neutral: "bg-steel-100 text-steel-700",
-  brass: "bg-brass-100 text-brass-800",
+  cobalt: "bg-cobalt-100 text-cobalt-800",
   steel: "bg-steel-900 text-white",
   green: "bg-emerald-100 text-emerald-800",
   red: "bg-red-100 text-red-700",

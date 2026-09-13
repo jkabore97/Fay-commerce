@@ -324,7 +324,7 @@ export function PurchaseForm({
               </span>
             </div>
 
-            <div className="flex items-start gap-2 rounded-xl bg-brass-50 px-3.5 py-3 text-xs text-brass-800">
+            <div className="flex items-start gap-2 rounded-xl bg-cobalt-50 px-3.5 py-3 text-xs text-cobalt-800">
               <Info className="mt-0.5 h-4 w-4 shrink-0" />
               <p>
                 L'enregistrement augmente le stock des produits concernés,

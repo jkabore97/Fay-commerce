@@ -57,8 +57,8 @@ export function SalesChart({ data }: { data: Point[] }) {
         <AreaChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
           <defs>
             <linearGradient id="salesFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#e08511" stopOpacity={0.28} />
-              <stop offset="100%" stopColor="#e08511" stopOpacity={0} />
+              <stop offset="0%" stopColor="#233cff" stopOpacity={0.28} />
+              <stop offset="100%" stopColor="#233cff" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid
@@ -85,11 +85,11 @@ export function SalesChart({ data }: { data: Point[] }) {
           <Area
             type="monotone"
             dataKey="net_sales"
-            stroke="#e08511"
+            stroke="#233cff"
             strokeWidth={2}
             fill="url(#salesFill)"
             dot={false}
-            activeDot={{ r: 4, fill: "#e08511" }}
+            activeDot={{ r: 4, fill: "#233cff" }}
           />
         </AreaChart>
       </ResponsiveContainer>

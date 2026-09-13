@@ -5,7 +5,7 @@ import type {
   StockMovementKind,
 } from "@/lib/types";
 
-type Tone = "neutral" | "brass" | "steel" | "green" | "red" | "amber" | "blue";
+type Tone = "neutral" | "cobalt" | "steel" | "green" | "red" | "amber" | "blue";
 
 export const ROLE_LABELS: Record<Role, string> = {
   admin: "Administrateur",
@@ -15,7 +15,7 @@ export const ROLE_LABELS: Record<Role, string> = {
 export const QUOTE_STATUS: Record<QuoteStatus, { label: string; tone: Tone }> = {
   new: { label: "Nouveau", tone: "blue" },
   in_review: { label: "En traitement", tone: "amber" },
-  quoted: { label: "Devis envoyé", tone: "brass" },
+  quoted: { label: "Devis envoyé", tone: "cobalt" },
   won: { label: "Gagné", tone: "green" },
   lost: { label: "Perdu", tone: "red" },
   cancelled: { label: "Annulé", tone: "neutral" },

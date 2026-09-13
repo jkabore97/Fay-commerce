@@ -103,7 +103,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     cta_href: "/devis",
     secondary_label: "Parcourir le catalogue",
     secondary_href: "/catalogue",
-    background_url: null,
+    background_url: "/catalog/hero.jpg",
   },
   about: {
     title: "À propos de Fay & Partenaires",
@@ -131,7 +131,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       "Galvanisé à chaud",
       "Aluminium",
     ],
-    image_url: null,
+    image_url: "/catalog/about.jpg",
   },
   contact: {
     phones: ["+226 70 50 30 34", "+226 76 80 09 97", "+226 79 77 71 73"],

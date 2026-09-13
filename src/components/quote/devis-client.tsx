@@ -106,7 +106,7 @@ export function DevisClient() {
         <p className="mt-2 text-steel-600">
           Merci. Votre demande de devis a bien été enregistrée sous la référence
         </p>
-        <p className="mt-3 inline-block rounded-xl bg-steel-900 px-5 py-2 font-mono text-lg font-bold text-brass-400">
+        <p className="mt-3 inline-block rounded-xl bg-steel-900 px-5 py-2 font-mono text-lg font-bold text-cobalt-400">
           {reference}
         </p>
         <p className="mt-4 text-sm text-steel-500">

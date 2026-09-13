@@ -31,7 +31,7 @@ export function SearchBox({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Rechercher un boulon, une vis, une référence…"
-        className="h-12 w-full rounded-xl border border-steel-200 bg-white pl-12 pr-24 text-sm shadow-sm focus:border-brass-400 focus:outline-none focus:ring-2 focus:ring-brass-100"
+        className="h-12 w-full rounded-xl border border-steel-200 bg-white pl-12 pr-24 text-sm shadow-sm focus:border-cobalt-400 focus:outline-none focus:ring-2 focus:ring-cobalt-100"
       />
       {value && (
         <button
@@ -45,7 +45,7 @@ export function SearchBox({
       )}
       <button
         type="submit"
-        className="absolute right-1.5 top-1/2 h-9 -translate-y-1/2 rounded-lg bg-brass-500 px-4 text-sm font-semibold text-white hover:bg-brass-600"
+        className="absolute right-1.5 top-1/2 h-9 -translate-y-1/2 rounded-lg bg-cobalt-500 px-4 text-sm font-semibold text-white hover:bg-cobalt-600"
       >
         Chercher
       </button>

@@ -106,7 +106,7 @@ export function ImageUpload({
               value={value && value.startsWith("http") ? value : ""}
               onChange={(e) => onChange(e.target.value || null)}
               placeholder="… ou coller une URL d'image"
-              className="h-10 w-full rounded-xl border border-steel-200 bg-white pl-9 pr-3 text-sm focus:border-brass-400 focus:outline-none focus:ring-2 focus:ring-brass-100"
+              className="h-10 w-full rounded-xl border border-steel-200 bg-white pl-9 pr-3 text-sm focus:border-cobalt-400 focus:outline-none focus:ring-2 focus:ring-cobalt-100"
             />
           </div>
         </div>
