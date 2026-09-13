@@ -220,7 +220,7 @@ export function AccountingTabs({
               className={cn(
                 "flex items-center gap-2 whitespace-nowrap border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors",
                 active
-                  ? "border-brass-500 text-brass-700"
+                  ? "border-cobalt-500 text-cobalt-700"
                   : "border-transparent text-steel-500 hover:text-steel-800",
               )}
             >

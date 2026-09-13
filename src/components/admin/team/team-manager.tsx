@@ -31,7 +31,7 @@ const EMPTY: FormState = {
   role: "employee",
 };
 
-const roleTone = (role: Role) => (role === "admin" ? "brass" : "steel");
+const roleTone = (role: Role) => (role === "admin" ? "cobalt" : "steel");
 
 export function TeamManager({
   staff,
@@ -154,7 +154,7 @@ export function TeamManager({
       </div>
 
       <div className="flex items-start gap-2.5 rounded-xl border border-steel-200 bg-steel-50/70 px-4 py-3 text-sm text-steel-600">
-        <Info className="mt-0.5 h-4 w-4 shrink-0 text-brass-600" />
+        <Info className="mt-0.5 h-4 w-4 shrink-0 text-cobalt-600" />
         <p>
           Le premier administrateur se crée directement en SQL depuis Supabase
           (voir le README). Vous pouvez ensuite ajouter et gérer les comptes ici.
@@ -180,7 +180,7 @@ export function TeamManager({
                 <TR key={member.id}>
                   <TD>
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-steel-900 text-xs font-bold text-brass-400">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-steel-900 text-xs font-bold text-cobalt-400">
                         {initials(member.full_name)}
                       </div>
                       <div className="min-w-0">

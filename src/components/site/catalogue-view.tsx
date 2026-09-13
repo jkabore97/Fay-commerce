@@ -25,7 +25,7 @@ export function CatalogueView({
     <>
       <section className="border-b border-steel-100 bg-white">
         <Container className="py-10">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brass-600">
+          <p className="text-sm font-semibold uppercase tracking-wider text-cobalt-600">
             Catalogue
           </p>
           <h1 className="mt-1.5 font-display text-3xl font-bold text-steel-900 sm:text-4xl">

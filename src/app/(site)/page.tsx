@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/primitives";
 import { LinkButton } from "@/components/ui/button";
-import { FayMark } from "@/components/brand/logo";
 import { Reveal, RevealGroup } from "@/components/motion/reveal";
 import { CategoryCard } from "@/components/site/category-card";
 import { ProductCard } from "@/components/site/product-card";
 import { PartnersStrip } from "@/components/site/partners-strip";
 import { DynamicIcon } from "@/components/icons";
+import { mediaUrl } from "@/lib/utils";
 import {
   getBanners,
   getPartners,
@@ -32,18 +32,36 @@ export default async function HomePage() {
   ]);
   const { hero, home, about } = content;
   const promo = promos[0];
+  const heroBg = hero.background_url?.startsWith("/")
+    ? hero.background_url
+    : mediaUrl(hero.background_url);
 
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden steel-texture text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-steel-950/40 via-transparent to-brass-900/20" />
-        <FayMark className="pointer-events-none absolute -right-16 -top-16 h-80 w-80 text-steel-800/40 animate-spin-slow" />
+      <section className="relative overflow-hidden bg-steel-950 text-white">
+        {heroBg && (
+          <img
+            src={heroBg}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-r from-steel-950/95 via-steel-950/85 to-steel-950/55" />
+        <div className="absolute inset-0 bg-steel-950/30" />
+        {/* Electric-blue chevron accent, echoing the brochure cover ribbon. */}
+        <div
+          className="pointer-events-none absolute -right-24 top-10 h-40 w-[28rem] bg-cobalt-500/90"
+          style={{
+            clipPath:
+              "polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 50%)",
+          }}
+        />
         <Container className="relative py-20 lg:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <Reveal>
-                <span className="inline-flex items-center gap-2 rounded-full border border-steel-700 bg-steel-900/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brass-400">
+                <span className="chevron-tag">
                   <BadgeCheck className="h-4 w-4" />
                   {hero.eyebrow}
                 </span>
@@ -76,13 +94,13 @@ export default async function HomePage() {
               <Reveal delay={4}>
                 <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-steel-400">
                   <span className="inline-flex items-center gap-2">
-                    <PackageCheck className="h-4 w-4 text-brass-500" /> Vente en gros / au lot
+                    <PackageCheck className="h-4 w-4 text-cobalt-500" /> Vente en gros / au lot
                   </span>
                   <span className="inline-flex items-center gap-2">
-                    <FileText className="h-4 w-4 text-brass-500" /> Devis gratuit
+                    <FileText className="h-4 w-4 text-cobalt-500" /> Devis gratuit
                   </span>
                   <span className="inline-flex items-center gap-2">
-                    <Truck className="h-4 w-4 text-brass-500" /> Approvisionnement fiable
+                    <Truck className="h-4 w-4 text-cobalt-500" /> Approvisionnement fiable
                   </span>
                 </div>
               </Reveal>
@@ -97,7 +115,7 @@ export default async function HomePage() {
                       key={s.label}
                       className="rounded-2xl border border-steel-700/60 bg-steel-900/50 p-5 backdrop-blur-sm"
                     >
-                      <p className="font-display text-3xl font-extrabold text-brass-400">
+                      <p className="font-display text-3xl font-extrabold text-cobalt-400">
                         {s.value}
                       </p>
                       <p className="mt-1 text-sm text-steel-300">{s.label}</p>
@@ -112,14 +130,14 @@ export default async function HomePage() {
 
       {/* ── Promo strip ──────────────────────────────────────────────────── */}
       {promo && (
-        <section className="bg-brass-500">
+        <section className="bg-cobalt-500">
           <Container className="flex flex-col items-center justify-between gap-3 py-4 text-center sm:flex-row sm:text-left">
             <div>
               <p className="font-display text-lg font-bold text-white">
                 {promo.title}
               </p>
               {promo.subtitle && (
-                <p className="text-sm text-brass-50">{promo.subtitle}</p>
+                <p className="text-sm text-cobalt-50">{promo.subtitle}</p>
               )}
             </div>
             {promo.cta_label && (
@@ -165,7 +183,7 @@ export default async function HomePage() {
               />
               <Link
                 href="/catalogue"
-                className="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-brass-600 hover:text-brass-700 sm:inline-flex"
+                className="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-cobalt-600 hover:text-cobalt-700 sm:inline-flex"
               >
                 Tout le catalogue <ArrowRight className="h-4 w-4" />
               </Link>
@@ -193,8 +211,8 @@ export default async function HomePage() {
           <RevealGroup className="mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {home.sectors.map((s) => (
               <Reveal key={s.name} as="div">
-                <div className="flex items-center gap-4 rounded-2xl border border-steel-100 bg-white p-5 shadow-card transition-colors hover:border-brass-200">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brass-50 text-brass-600">
+                <div className="flex items-center gap-4 rounded-2xl border border-steel-100 bg-white p-5 shadow-card transition-colors hover:border-cobalt-200">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cobalt-50 text-cobalt-600">
                     <DynamicIcon name={s.icon} className="h-6 w-6" />
                   </div>
                   <span className="font-semibold text-steel-800">{s.name}</span>

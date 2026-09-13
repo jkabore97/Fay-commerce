@@ -4,29 +4,33 @@ import { mediaUrl } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
 /**
- * Product / category image with a branded fallback. Fasteners are hard to
- * photograph well and many rows will have no image at first, so the fallback is
- * designed to look intentional: a steel field with the category icon and the
- * Fay mark, not a broken-image glyph.
+ * Product / category image. Resolution order:
+ *   1. `src`         — a DB image_url (Supabase Storage path or absolute URL)
+ *   2. `fallbackSrc` — a built-in brochure photo under /public (root-relative)
+ *   3. a branded steel placeholder with the category icon
  */
 export function ProductImage({
   src,
+  fallbackSrc,
   alt,
   categorySlug,
   className,
   rounded = "rounded-2xl",
+  fit = "cover",
 }: {
   src: string | null | undefined;
+  fallbackSrc?: string | null;
   alt: string;
   categorySlug?: string | null;
   className?: string;
   rounded?: string;
+  fit?: "cover" | "contain";
 }) {
-  const url = mediaUrl(src);
+  const url = mediaUrl(src) ?? fallbackSrc ?? null;
   return (
     <div
       className={cn(
-        "relative flex items-center justify-center overflow-hidden bg-steel-100",
+        "relative flex items-center justify-center overflow-hidden bg-white",
         rounded,
         className,
       )}
@@ -36,7 +40,10 @@ export function ProductImage({
           src={url}
           alt={alt}
           loading="lazy"
-          className="h-full w-full object-cover"
+          className={cn(
+            "h-full w-full",
+            fit === "contain" ? "object-contain p-3" : "object-cover",
+          )}
         />
       ) : (
         <div className="relative flex h-full w-full items-center justify-center steel-texture">
@@ -46,7 +53,7 @@ export function ProductImage({
               className="h-1/3 w-1/3 max-h-16 max-w-16 text-steel-600"
             />
           ) : (
-            <FayMark className="h-1/3 w-1/3 max-h-16 max-w-16 text-brass-600/70" />
+            <FayMark className="h-1/3 w-1/3 max-h-16 max-w-16 text-cobalt-600/70" />
           )}
           <FayMark className="absolute bottom-2 right-2 h-5 w-5 text-steel-700" />
         </div>

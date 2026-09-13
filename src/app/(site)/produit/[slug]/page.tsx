@@ -15,6 +15,7 @@ import { ProductGallery } from "@/components/site/product-gallery";
 import { ProductCard } from "@/components/site/product-card";
 import { AddToQuote } from "@/components/quote/add-to-quote";
 import { getStorefrontProduct, getStorefrontProducts } from "@/lib/queries";
+import { productImageFallback } from "@/lib/catalog-images";
 
 export async function generateMetadata({
   params,
@@ -78,13 +79,14 @@ export default async function ProductPage({
             gallery={product.gallery}
             alt={product.name}
             categorySlug={product.category_slug}
+            fallback={productImageFallback(product.slug, product.category_slug)}
           />
 
           <div>
             <div className="flex flex-wrap items-center gap-2">
               {product.category_name && (
                 <Link href={`/catalogue/${product.category_slug}`}>
-                  <Badge tone="brass">{product.category_name}</Badge>
+                  <Badge tone="cobalt">{product.category_name}</Badge>
                 </Link>
               )}
               {product.in_stock ? (
@@ -181,13 +183,13 @@ export default async function ProductPage({
             {/* Trust row */}
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-steel-500">
               <span className="inline-flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-brass-500" /> Qualité garantie
+                <ShieldCheck className="h-4 w-4 text-cobalt-500" /> Qualité garantie
               </span>
               <span className="inline-flex items-center gap-2">
-                <Truck className="h-4 w-4 text-brass-500" /> Approvisionnement fiable
+                <Truck className="h-4 w-4 text-cobalt-500" /> Approvisionnement fiable
               </span>
               <span className="inline-flex items-center gap-2">
-                <FileText className="h-4 w-4 text-brass-500" /> Devis sous 24h
+                <FileText className="h-4 w-4 text-cobalt-500" /> Devis sous 24h
               </span>
             </div>
           </div>

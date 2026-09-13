@@ -36,7 +36,7 @@ export function Header({ phone }: { phone?: string }) {
           {phone && (
             <a
               href={`tel:${phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-brass-400"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-cobalt-400"
             >
               <Phone className="h-3.5 w-3.5" /> {phone}
             </a>
@@ -55,7 +55,7 @@ export function Header({ phone }: { phone?: string }) {
               className={cn(
                 "link-underline text-sm font-semibold transition-colors",
                 isActive(item.href)
-                  ? "text-brass-600"
+                  ? "text-cobalt-600"
                   : "text-steel-700 hover:text-steel-900",
               )}
             >
@@ -72,7 +72,7 @@ export function Header({ phone }: { phone?: string }) {
             <ShoppingCart className="h-4 w-4" />
             <span className="hidden sm:inline">Ma demande</span>
             {count > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-brass-500 px-1 text-[11px] font-bold text-white">
+              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-cobalt-500 px-1 text-[11px] font-bold text-white">
                 {count}
               </span>
             )}
@@ -108,7 +108,7 @@ export function Header({ phone }: { phone?: string }) {
                   className={cn(
                     "rounded-lg px-3 py-2.5 text-sm font-semibold",
                     isActive(item.href)
-                      ? "bg-brass-50 text-brass-700"
+                      ? "bg-cobalt-50 text-cobalt-700"
                       : "text-steel-700 hover:bg-steel-50",
                   )}
                 >

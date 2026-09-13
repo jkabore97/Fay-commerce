@@ -14,7 +14,7 @@ export function PartnersStrip({ partners }: { partners: Partner[] }) {
             className="h-10 w-auto max-w-[140px] object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           />
         ) : (
-          <span className="rounded-full border border-steel-200 px-4 py-1.5 text-sm font-semibold text-steel-500 transition-colors hover:border-brass-300 hover:text-steel-800">
+          <span className="rounded-full border border-steel-200 px-4 py-1.5 text-sm font-semibold text-steel-500 transition-colors hover:border-cobalt-300 hover:text-steel-800">
             {p.name}
           </span>
         );

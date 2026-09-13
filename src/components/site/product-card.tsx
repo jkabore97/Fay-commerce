@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ProductImage } from "./product-image";
 import { AddToQuote } from "@/components/quote/add-to-quote";
+import { productImageFallback } from "@/lib/catalog-images";
 import type { StorefrontProduct } from "@/lib/types";
 
 export function ProductCard({ product }: { product: StorefrontProduct }) {
@@ -11,13 +12,15 @@ export function ProductCard({ product }: { product: StorefrontProduct }) {
       <Link href={`/produit/${product.slug}`} className="relative block">
         <ProductImage
           src={product.image_url}
+          fallbackSrc={productImageFallback(product.slug, product.category_slug)}
+          fit="contain"
           alt={product.name}
           categorySlug={product.category_slug}
           rounded="rounded-none"
-          className="aspect-[4/3] w-full"
+          className="aspect-[4/3] w-full border-b border-steel-100"
         />
         <div className="absolute left-3 top-3 flex gap-1.5">
-          {product.is_featured && <Badge tone="brass">Populaire</Badge>}
+          {product.is_featured && <Badge tone="cobalt">Populaire</Badge>}
         </div>
         <div className="absolute right-3 top-3">
           {product.in_stock ? (
@@ -30,12 +33,12 @@ export function ProductCard({ product }: { product: StorefrontProduct }) {
 
       <div className="flex flex-1 flex-col p-4">
         {product.category_name && (
-          <p className="text-xs font-semibold uppercase tracking-wide text-brass-600">
+          <p className="text-xs font-semibold uppercase tracking-wide text-cobalt-600">
             {product.category_name}
           </p>
         )}
         <Link href={`/produit/${product.slug}`}>
-          <h3 className="mt-1 line-clamp-2 font-display text-base font-bold text-steel-900 transition-colors group-hover:text-brass-700">
+          <h3 className="mt-1 line-clamp-2 font-display text-base font-bold text-steel-900 transition-colors group-hover:text-cobalt-700">
             {product.name}
           </h3>
         </Link>

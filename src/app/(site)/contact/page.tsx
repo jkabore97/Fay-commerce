@@ -17,7 +17,7 @@ export default async function ContactPage() {
     <>
       <section className="border-b border-steel-100 bg-white">
         <Container className="py-10">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brass-600">
+          <p className="text-sm font-semibold uppercase tracking-wider text-cobalt-600">
             Nous contacter
           </p>
           <h1 className="mt-1.5 font-display text-3xl font-bold text-steel-900 sm:text-4xl">
@@ -37,14 +37,14 @@ export default async function ContactPage() {
           <div className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="card p-5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brass-50 text-brass-600">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cobalt-50 text-cobalt-600">
                   <Phone className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-semibold text-steel-900">Téléphone</h3>
                 <ul className="mt-1 space-y-1 text-sm text-steel-600">
                   {contact.phones.map((p) => (
                     <li key={p}>
-                      <a href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-brass-600">
+                      <a href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-cobalt-600">
                         {p}
                       </a>
                     </li>
@@ -52,19 +52,19 @@ export default async function ContactPage() {
                 </ul>
               </div>
               <div className="card p-5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brass-50 text-brass-600">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cobalt-50 text-cobalt-600">
                   <Mail className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-semibold text-steel-900">E-mail</h3>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="mt-1 block break-all text-sm text-steel-600 hover:text-brass-600"
+                  className="mt-1 block break-all text-sm text-steel-600 hover:text-cobalt-600"
                 >
                   {contact.email}
                 </a>
               </div>
               <div className="card p-5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brass-50 text-brass-600">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cobalt-50 text-cobalt-600">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-semibold text-steel-900">Adresse</h3>
@@ -75,7 +75,7 @@ export default async function ContactPage() {
                 </p>
               </div>
               <div className="card p-5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brass-50 text-brass-600">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cobalt-50 text-cobalt-600">
                   <Clock className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-semibold text-steel-900">Horaires</h3>

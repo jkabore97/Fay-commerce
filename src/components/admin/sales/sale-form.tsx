@@ -244,7 +244,7 @@ export function SaleForm({
                           {formatNumber(p.quantity)} {p.unit} en stock
                         </span>
                       </span>
-                      <span className="whitespace-nowrap text-sm font-semibold text-brass-700">
+                      <span className="whitespace-nowrap text-sm font-semibold text-cobalt-700">
                         {formatMoney(p.sale_price)}
                       </span>
                     </button>

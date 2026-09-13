@@ -356,7 +356,7 @@ export function CategoriesManager({
                   onChange={(e) =>
                     setForm((f) => ({ ...f, is_active: e.target.checked }))
                   }
-                  className="h-4 w-4 accent-brass-500"
+                  className="h-4 w-4 accent-cobalt-500"
                 />
                 Active (visible sur la vitrine)
               </label>

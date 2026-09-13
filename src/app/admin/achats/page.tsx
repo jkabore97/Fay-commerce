@@ -46,7 +46,7 @@ export default async function AchatsPage() {
           value={purchases.length}
           sub="100 derniers"
           icon={<Truck className="h-5 w-5" />}
-          tone="brass"
+          tone="cobalt"
         />
       </div>
 

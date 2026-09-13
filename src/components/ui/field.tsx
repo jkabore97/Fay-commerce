@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 const control =
-  "w-full rounded-xl border border-steel-200 bg-white px-3.5 py-2.5 text-sm text-steel-900 placeholder:text-steel-400 shadow-sm transition-colors focus:border-brass-400 focus:outline-none focus:ring-2 focus:ring-brass-100 disabled:bg-steel-50 disabled:text-steel-400";
+  "w-full rounded-xl border border-steel-200 bg-white px-3.5 py-2.5 text-sm text-steel-900 placeholder:text-steel-400 shadow-sm transition-colors focus:border-cobalt-400 focus:outline-none focus:ring-2 focus:ring-cobalt-100 disabled:bg-steel-50 disabled:text-steel-400";
 
 export const Input = forwardRef<
   HTMLInputElement,
@@ -39,7 +39,7 @@ export function Label({
   return (
     <label className={cn("mb-1.5 block text-sm font-medium text-steel-700", className)} {...props}>
       {children}
-      {required && <span className="ml-0.5 text-brass-600">*</span>}
+      {required && <span className="ml-0.5 text-cobalt-600">*</span>}
     </label>
   );
 }

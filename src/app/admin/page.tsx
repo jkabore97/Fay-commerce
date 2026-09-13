@@ -101,7 +101,7 @@ export default async function AdminDashboard() {
           value={formatMoney(day.net_sales)}
           sub={`${day.sale_count} vente${day.sale_count > 1 ? "s" : ""}`}
           icon={<Receipt className="h-5 w-5" />}
-          tone="brass"
+          tone="cobalt"
         />
         {isAdmin ? (
           <>
@@ -144,7 +144,7 @@ export default async function AdminDashboard() {
               label="Nouveaux devis"
               value={newQuotesCount.count ?? 0}
               icon={<ClipboardList className="h-5 w-5" />}
-              tone="brass"
+              tone="cobalt"
             />
           </>
         )}
@@ -173,7 +173,7 @@ export default async function AdminDashboard() {
             <h2 className="font-display text-base font-bold text-steel-900">
               Stock bas
             </h2>
-            <Link href="/admin/stock" className="text-xs font-semibold text-brass-600 hover:text-brass-700">
+            <Link href="/admin/stock" className="text-xs font-semibold text-cobalt-600 hover:text-cobalt-700">
               Tout voir
             </Link>
           </div>
@@ -206,7 +206,7 @@ export default async function AdminDashboard() {
             <h2 className="font-display text-base font-bold text-steel-900">
               Dernières demandes de devis
             </h2>
-            <Link href="/admin/devis" className="text-xs font-semibold text-brass-600 hover:text-brass-700">
+            <Link href="/admin/devis" className="text-xs font-semibold text-cobalt-600 hover:text-cobalt-700">
               Tout voir
             </Link>
           </div>
@@ -249,7 +249,7 @@ export default async function AdminDashboard() {
             <h2 className="font-display text-base font-bold text-steel-900">
               Dernières ventes
             </h2>
-            <Link href="/admin/ventes" className="text-xs font-semibold text-brass-600 hover:text-brass-700">
+            <Link href="/admin/ventes" className="text-xs font-semibold text-cobalt-600 hover:text-cobalt-700">
               Tout voir
             </Link>
           </div>

@@ -31,7 +31,7 @@ export default async function NouvelAchatPage() {
       <div>
         <Link
           href="/admin/achats"
-          className="mb-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brass-600 hover:text-brass-700"
+          className="mb-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cobalt-600 hover:text-cobalt-700"
         >
           <ArrowLeft className="h-4 w-4" /> Retour aux achats
         </Link>

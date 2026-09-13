@@ -16,7 +16,7 @@ export function Footer({
 }) {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-24 steel-texture text-steel-300">
+    <footer className="mt-24 border-t-4 border-cobalt-500 steel-texture text-steel-300">
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
@@ -35,7 +35,7 @@ export function Footer({
                 <li key={c.slug}>
                   <Link
                     href={`/catalogue/${c.slug}`}
-                    className="text-steel-400 transition-colors hover:text-brass-400"
+                    className="text-steel-400 transition-colors hover:text-cobalt-400"
                   >
                     {c.name}
                   </Link>
@@ -49,10 +49,10 @@ export function Footer({
               Entreprise
             </h3>
             <ul className="space-y-2.5 text-sm">
-              <li><Link href="/a-propos" className="text-steel-400 hover:text-brass-400">À propos</Link></li>
-              <li><Link href="/contact" className="text-steel-400 hover:text-brass-400">Contact</Link></li>
-              <li><Link href="/devis" className="text-steel-400 hover:text-brass-400">Demander un devis</Link></li>
-              <li><Link href="/login" className="text-steel-400 hover:text-brass-400">Espace personnel</Link></li>
+              <li><Link href="/a-propos" className="text-steel-400 hover:text-cobalt-400">À propos</Link></li>
+              <li><Link href="/contact" className="text-steel-400 hover:text-cobalt-400">Contact</Link></li>
+              <li><Link href="/devis" className="text-steel-400 hover:text-cobalt-400">Demander un devis</Link></li>
+              <li><Link href="/login" className="text-steel-400 hover:text-cobalt-400">Espace personnel</Link></li>
             </ul>
           </div>
 
@@ -63,20 +63,20 @@ export function Footer({
             <ul className="space-y-3 text-sm">
               {contact.phones.slice(0, 2).map((p) => (
                 <li key={p} className="flex items-start gap-2.5">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brass-500" />
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-cobalt-500" />
                   <a href={`tel:${p.replace(/\s/g, "")}`} className="text-steel-300 hover:text-white">
                     {p}
                   </a>
                 </li>
               ))}
               <li className="flex items-start gap-2.5">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brass-500" />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-cobalt-500" />
                 <a href={`mailto:${contact.email}`} className="break-all text-steel-300 hover:text-white">
                   {contact.email}
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brass-500" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-cobalt-500" />
                 <span className="text-steel-400">
                   {contact.address}
                   <br />

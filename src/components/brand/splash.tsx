@@ -45,7 +45,7 @@ export function Splash() {
             animate={{ scale: 1, opacity: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 160, damping: 14 }}
           >
-            <FayMark className="h-20 w-20 text-brass-500" />
+            <FayMark className="h-20 w-20 text-cobalt-500" />
           </motion.div>
           <motion.div
             className="mt-6 text-center"
@@ -54,7 +54,7 @@ export function Splash() {
             transition={{ delay: 0.25, duration: 0.5 }}
           >
             <p className="font-display text-2xl font-extrabold text-white">
-              FAY <span className="text-brass-500">&amp;</span> Partenaires
+              FAY <span className="text-cobalt-500">&amp;</span> Partenaires
             </p>
             <p className="mt-1 text-xs font-semibold uppercase tracking-[0.3em] text-steel-300">
               Commerce Général · Boulonnerie
@@ -67,7 +67,7 @@ export function Splash() {
             transition={{ delay: 0.4 }}
           >
             <motion.div
-              className="h-full bg-brass-500"
+              className="h-full bg-cobalt-500"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
               transition={{ duration: 1.2, ease: "easeInOut" }}

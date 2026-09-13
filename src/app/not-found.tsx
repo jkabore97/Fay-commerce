@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
       <Logo href="/" />
-      <p className="mt-10 font-display text-7xl font-extrabold text-brass-500">
+      <p className="mt-10 font-display text-7xl font-extrabold text-cobalt-500">
         404
       </p>
       <h1 className="mt-4 font-display text-2xl font-bold text-steel-900">
@@ -17,7 +17,7 @@ export default function NotFound() {
       <div className="mt-8 flex gap-3">
         <Link
           href="/"
-          className="inline-flex h-11 items-center rounded-xl bg-brass-500 px-5 text-sm font-semibold text-white hover:bg-brass-600"
+          className="inline-flex h-11 items-center rounded-xl bg-cobalt-500 px-5 text-sm font-semibold text-white hover:bg-cobalt-600"
         >
           Retour à l'accueil
         </Link>

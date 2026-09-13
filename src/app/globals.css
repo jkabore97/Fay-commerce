@@ -10,7 +10,8 @@
   --font-display: "Sora", "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
     sans-serif;
 
-  --bg: #f7f8fa;
+  /* Pale sage-mint canvas from the brochure (#EBF4EB), a touch lighter. */
+  --bg: #eef4ee;
   --fg: #12233a;
   color-scheme: light;
 }
@@ -40,7 +41,7 @@ body {
     color: theme("colors.steel.900");
   }
   ::selection {
-    background: theme("colors.brass.200");
+    background: theme("colors.cobalt.200");
     color: theme("colors.steel.900");
   }
 }
@@ -61,7 +62,18 @@ body {
   }
   .link-underline {
     @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-px
-      after:w-0 after:bg-brass-500 after:transition-all hover:after:w-full;
+      after:w-0 after:bg-cobalt-500 after:transition-all hover:after:w-full;
+  }
+  /* Electric-blue chevron ribbon from the brochure (eyebrow / tag). */
+  .chevron-tag {
+    @apply relative inline-flex items-center gap-2 bg-cobalt-500 px-4 py-1.5
+      text-xs font-bold uppercase tracking-wider text-white;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+  }
+  /* Dashed rule under a heading, brochure-style. */
+  .dashed-underline::after {
+    content: "";
+    @apply mt-3 block h-0 w-32 border-b-[3px] border-dashed border-cobalt-400;
   }
 }
 

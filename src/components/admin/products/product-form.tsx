@@ -324,7 +324,7 @@ export function ProductForm({
         <button
           type="button"
           onClick={addSpec}
-          className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-brass-600 hover:text-brass-700"
+          className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-cobalt-600 hover:text-cobalt-700"
         >
           <Plus className="h-4 w-4" /> Ajouter une caractéristique
         </button>
@@ -336,7 +336,7 @@ export function ProductForm({
             type="checkbox"
             checked={isFeatured}
             onChange={(e) => setIsFeatured(e.target.checked)}
-            className="h-4 w-4 rounded border-steel-300 text-brass-500 focus:ring-brass-400"
+            className="h-4 w-4 rounded border-steel-300 text-cobalt-500 focus:ring-cobalt-400"
           />
           <span className="text-sm font-medium text-steel-700">
             Mettre en vedette
@@ -347,7 +347,7 @@ export function ProductForm({
             type="checkbox"
             checked={isActive}
             onChange={(e) => setIsActive(e.target.checked)}
-            className="h-4 w-4 rounded border-steel-300 text-brass-500 focus:ring-brass-400"
+            className="h-4 w-4 rounded border-steel-300 text-cobalt-500 focus:ring-cobalt-400"
           />
           <span className="text-sm font-medium text-steel-700">
             Actif (visible sur la vitrine)
