@@ -22,7 +22,7 @@ export function CategoryCard({ category }: { category: Category }) {
           rounded="rounded-none"
           className="aspect-[4/3] w-full"
         />
-        <span className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cobalt-500 text-white shadow-md">
+        <span className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-steel-900 text-white shadow-md transition-colors group-hover:bg-cobalt-500">
           <CategoryIcon slug={category.slug} className="h-5 w-5" />
         </span>
       </div>

@@ -56,13 +56,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // A signed-in user visiting /login goes to the dashboard.
-  if (path === "/login" && user) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/admin";
-    url.search = "";
-    return NextResponse.redirect(url);
-  }
+  // Note: we deliberately do NOT auto-redirect /login → /admin for a signed-in
+  // user. A user who is authenticated but has no active `staff` row is bounced
+  // to /login?denied=1 by requireStaff(); auto-redirecting here would ping-pong
+  // between /login and /admin forever.
 
   return response;
 }

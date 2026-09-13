@@ -28,9 +28,17 @@ export async function generateMetadata(): Promise<Metadata> {
       title: seo.title,
       description: seo.description,
       locale: "fr_FR",
+      images: [{ url: "/icon-512.png", width: 512, height: 512, alt: SITE_NAME }],
     },
-    twitter: { card: "summary_large_image" },
-    icons: { icon: "/favicon.svg" },
+    twitter: { card: "summary_large_image", images: ["/icon-512.png"] },
+    icons: {
+      icon: [
+        { url: "/favicon-64.png", sizes: "64x64", type: "image/png" },
+        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      ],
+      apple: "/apple-touch-icon.png",
+      shortcut: "/favicon-64.png",
+    },
   };
 }
 

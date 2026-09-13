@@ -43,23 +43,16 @@ export function Logo({
   /** Deprecated: the logo image already contains the wordmark. */
   showText?: boolean;
 }) {
-  const chip = variant === "light";
-  const img = (
-    <img
-      src={SITE_IMAGES.logo}
-      alt="Fay & Partenaires"
-      className="h-9 w-auto sm:h-10"
-    />
-  );
+  // On a dark surface use the transparent logo (no white box); on a light
+  // surface use the original artwork, which already sits on white.
+  const dark = variant === "light";
   const inner = (
     <span className={cn("inline-flex items-center", className)}>
-      {chip ? (
-        <span className="inline-flex items-center rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
-          {img}
-        </span>
-      ) : (
-        img
-      )}
+      <img
+        src={dark ? SITE_IMAGES.logoLight : SITE_IMAGES.logo}
+        alt="Fay & Partenaires"
+        className="h-9 w-auto sm:h-10"
+      />
     </span>
   );
 

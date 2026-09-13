@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { AlertTriangle, LogIn } from "lucide-react";
+import { AlertTriangle, Info, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { createClient } from "@/lib/supabase/client";
@@ -48,6 +48,16 @@ export function LoginForm() {
 
   return (
     <form onSubmit={submit} className="space-y-4">
+      {params.get("denied") && !error && (
+        <div className="flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <Info className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>
+            Ce compte est bien connecté mais n&apos;a pas encore d&apos;accès au
+            back-office. Un administrateur doit l&apos;ajouter à l&apos;équipe
+            (voir le README pour créer le premier administrateur).
+          </span>
+        </div>
+      )}
       {error && (
         <div className="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
