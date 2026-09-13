@@ -33,14 +33,42 @@ export function LoginForm() {
         password,
       });
       if (error) {
-        setError("Identifiants incorrects. Vérifiez votre e-mail et mot de passe.");
+        // The message depends on WHY sign-in failed, so a configuration problem
+        // (app pointing at the wrong Supabase project, or a URL/key mismatch)
+        // is never mistaken for a wrong password. The raw error is logged so it
+        // shows up in the browser console for support.
+        console.error("[login] signInWithPassword failed:", error);
+        const code = (error as { code?: string }).code;
+        const status = (error as { status?: number }).status;
+        if (code === "invalid_credentials" || status === 400) {
+          setError(
+            "Identifiants incorrects. Vérifiez votre e-mail et mot de passe.",
+          );
+        } else if (code === "email_not_confirmed") {
+          setError(
+            "Cet e-mail n'est pas encore confirmé. Contactez un administrateur.",
+          );
+        } else if (status === 401 || status === 403) {
+          setError(
+            "Clé d'API Supabase invalide. Vérifiez NEXT_PUBLIC_SUPABASE_ANON_KEY (elle doit provenir du même projet que l'URL).",
+          );
+        } else {
+          setError(
+            "Impossible de contacter le serveur d'authentification. Vérifiez la configuration Supabase (URL et clé) puis réessayez.",
+          );
+        }
         return;
       }
       const redirect = params.get("redirect") || "/admin";
       router.push(redirect);
       router.refresh();
-    } catch {
-      setError("Une erreur est survenue. Réessayez.");
+    } catch (err) {
+      // A thrown (rather than returned) error is almost always a network or URL
+      // problem: an unreachable or malformed NEXT_PUBLIC_SUPABASE_URL.
+      console.error("[login] unexpected error:", err);
+      setError(
+        "Impossible de contacter le serveur d'authentification. Vérifiez la configuration Supabase (URL et clé) puis réessayez.",
+      );
     } finally {
       setLoading(false);
     }
