@@ -26,6 +26,8 @@ export function mediaUrl(
   if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) {
     return pathOrUrl;
   }
+  // Root-relative path → a local asset in /public (e.g. seeded catalogue photos).
+  if (pathOrUrl.startsWith("/")) return pathOrUrl;
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
   const bucket = process.env.NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET ?? "media";
   if (!base) return null;
