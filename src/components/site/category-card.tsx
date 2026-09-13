@@ -16,6 +16,7 @@ export function CategoryCard({ category }: { category: Category }) {
           src={category.image_url}
           fallbackSrc={categoryImageFallback(category.slug)}
           fit="contain"
+          zoom
           alt={category.name}
           categorySlug={category.slug}
           rounded="rounded-none"

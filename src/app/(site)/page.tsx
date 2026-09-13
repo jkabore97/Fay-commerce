@@ -12,6 +12,7 @@ import { Reveal, RevealGroup } from "@/components/motion/reveal";
 import { CategoryCard } from "@/components/site/category-card";
 import { ProductCard } from "@/components/site/product-card";
 import { PartnersStrip } from "@/components/site/partners-strip";
+import { GalleryMarquee } from "@/components/site/gallery-marquee";
 import { DynamicIcon } from "@/components/icons";
 import { mediaUrl } from "@/lib/utils";
 import {
@@ -44,7 +45,7 @@ export default async function HomePage() {
           <img
             src={heroBg}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full origin-center object-cover animate-kenburns"
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-steel-950/95 via-steel-950/85 to-steel-950/55" />
@@ -168,6 +169,26 @@ export default async function HomePage() {
               </Reveal>
             ))}
           </RevealGroup>
+        </Container>
+      </section>
+
+      {/* ── Animated product gallery ─────────────────────────────────────── */}
+      <section className="overflow-hidden bg-white py-16">
+        <Container>
+          <SectionHeading
+            center
+            eyebrow="En images"
+            title="Notre gamme en un coup d'œil"
+            description="Un aperçu de nos boulons, vis, écrous, rondelles, tiges d'ancrage et roulements."
+          />
+        </Container>
+        <div className="mt-10">
+          <GalleryMarquee />
+        </div>
+        <Container className="mt-10 flex justify-center">
+          <LinkButton href="/catalogue" size="lg" variant="secondary">
+            Voir tout le catalogue <ArrowRight className="h-5 w-5" />
+          </LinkButton>
         </Container>
       </section>
 
