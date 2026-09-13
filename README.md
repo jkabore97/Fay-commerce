@@ -212,6 +212,16 @@ npm run typecheck  # TypeScript (tsc --noEmit)
    reste secret (ne jamais préfixer par `NEXT_PUBLIC_`).
 4. Déployez. Mettez `NEXT_PUBLIC_SITE_URL` à l'URL de production.
 
+> **Framework = Next.js (important).** Le fichier `vercel.json` épingle
+> `framework: nextjs` et la commande de build, ce qui force Vercel à construire
+> l'application correctement. Si le projet a été importé alors que `main` était
+> encore vide, Vercel peut avoir mémorisé le preset **« Other »** (site statique,
+> sans build) — ce qui donne une page **404: NOT_FOUND** de Vercel sur toutes les
+> routes. Dans ce cas : **Project → Settings → Build & Development Settings →
+> Framework Preset = Next.js**, laissez *Output Directory* par défaut, puis
+> **Deployments → Redeploy**. Avec `vercel.json` en place, un simple redéploiement
+> suffit.
+
 Dans Supabase → Authentication → URL Configuration, ajoutez l'URL de production
 aux *Redirect URLs*.
 
