@@ -50,3 +50,102 @@ export function categoryImageFallback(
 ): string | undefined {
   return slug ? CATEGORY_IMAGES[slug] : undefined;
 }
+
+// ── Extra brochure photography, grouped by family ───────────────────────────
+// Used for the animated home marquee and for multi-image product galleries.
+export const GALLERY_BY_CATEGORY: Record<string, string[]> = {
+  boulonnerie: [
+    "/catalog/gallery/boulonnerie/g01.jpg",
+    "/catalog/gallery/boulonnerie/g02.jpg",
+    "/catalog/gallery/boulonnerie/g03.jpg",
+    "/catalog/gallery/boulonnerie/g04.jpg",
+    "/catalog/gallery/boulonnerie/g05.jpg",
+    "/catalog/gallery/boulonnerie/g06.jpg",
+    "/catalog/gallery/boulonnerie/g07.jpg",
+    "/catalog/gallery/boulonnerie/g08.jpg",
+    "/catalog/gallery/boulonnerie/g09.jpg",
+    "/catalog/gallery/boulonnerie/g10.jpg",
+    "/catalog/gallery/boulonnerie/g11.jpg",
+    "/catalog/gallery/boulonnerie/g12.jpg",
+  ],
+  visserie: [
+    "/catalog/gallery/visserie/g01.jpg",
+    "/catalog/gallery/visserie/g02.jpg",
+    "/catalog/gallery/visserie/g03.jpg",
+    "/catalog/gallery/visserie/g04.jpg",
+    "/catalog/gallery/visserie/g05.jpg",
+    "/catalog/gallery/visserie/g06.jpg",
+  ],
+  ecrous: [
+    "/catalog/gallery/ecrous/g01.jpg",
+    "/catalog/gallery/ecrous/g02.jpg",
+    "/catalog/gallery/ecrous/g03.jpg",
+    "/catalog/gallery/ecrous/g04.jpg",
+    "/catalog/gallery/ecrous/g05.jpg",
+    "/catalog/gallery/ecrous/g06.jpg",
+    "/catalog/gallery/ecrous/g07.jpg",
+    "/catalog/gallery/ecrous/g08.jpg",
+    "/catalog/gallery/ecrous/g09.jpg",
+    "/catalog/gallery/ecrous/g10.jpg",
+    "/catalog/gallery/ecrous/g11.jpg",
+    "/catalog/gallery/ecrous/g12.jpg",
+  ],
+  rondelles: [
+    "/catalog/gallery/rondelles/g01.jpg",
+    "/catalog/gallery/rondelles/g02.jpg",
+    "/catalog/gallery/rondelles/g03.jpg",
+    "/catalog/gallery/rondelles/g04.jpg",
+    "/catalog/gallery/rondelles/g05.jpg",
+  ],
+  roulements: [
+    "/catalog/gallery/roulements/g01.jpg",
+    "/catalog/gallery/roulements/g02.jpg",
+    "/catalog/gallery/roulements/g03.jpg",
+    "/catalog/gallery/roulements/g04.jpg",
+  ],
+};
+// Anchor rods share the p06 family (washers / anchors).
+GALLERY_BY_CATEGORY["tiges-d-ancrage"] = GALLERY_BY_CATEGORY.rondelles;
+
+function interleave(lists: string[][]): string[] {
+  const out: string[] = [];
+  let i = 0;
+  let added = true;
+  while (added) {
+    added = false;
+    for (const l of lists) {
+      if (l[i]) {
+        out.push(l[i]);
+        added = true;
+      }
+    }
+    i++;
+  }
+  return out;
+}
+
+/** A varied, deterministic ordering of every gallery photo (for the marquee). */
+export const GALLERY_ALL: string[] = interleave([
+  GALLERY_BY_CATEGORY.boulonnerie,
+  GALLERY_BY_CATEGORY.ecrous,
+  GALLERY_BY_CATEGORY.visserie,
+  GALLERY_BY_CATEGORY.rondelles,
+  GALLERY_BY_CATEGORY.roulements,
+]);
+
+/** Several photos for one product page: its own, then a few from its family. */
+export function productGalleryFallback(
+  slug: string | null | undefined,
+  categorySlug: string | null | undefined,
+): string[] {
+  const out: string[] = [];
+  const primary = productImageFallback(slug, categorySlug);
+  if (primary) out.push(primary);
+  const family = categorySlug ? GALLERY_BY_CATEGORY[categorySlug] ?? [] : [];
+  for (const g of family) {
+    if (!out.includes(g)) out.push(g);
+    if (out.length >= 5) break;
+  }
+  return out;
+}
+

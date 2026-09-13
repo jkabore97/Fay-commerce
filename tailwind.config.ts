@@ -75,11 +75,26 @@ const config: Config = {
         shimmer: {
           "100%": { transform: "translateX(100%)" },
         },
+        "marquee-left": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-right": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        kenburns: {
+          "0%": { transform: "scale(1) translate3d(0,0,0)" },
+          "100%": { transform: "scale(1.12) translate3d(-1.5%,-1.5%,0)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s cubic-bezier(0.16,1,0.3,1) both",
         "spin-slow": "spin-slow 8s linear infinite",
         shimmer: "shimmer 1.6s infinite",
+        "marquee-left": "marquee-left 42s linear infinite",
+        "marquee-right": "marquee-right 42s linear infinite",
+        kenburns: "kenburns 20s ease-in-out infinite alternate",
       },
       backgroundImage: {
         "steel-grid":

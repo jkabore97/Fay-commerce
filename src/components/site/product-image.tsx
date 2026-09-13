@@ -17,6 +17,7 @@ export function ProductImage({
   className,
   rounded = "rounded-2xl",
   fit = "cover",
+  zoom = false,
 }: {
   src: string | null | undefined;
   fallbackSrc?: string | null;
@@ -25,6 +26,7 @@ export function ProductImage({
   className?: string;
   rounded?: string;
   fit?: "cover" | "contain";
+  zoom?: boolean;
 }) {
   const url = mediaUrl(src) ?? fallbackSrc ?? null;
   return (
@@ -43,6 +45,7 @@ export function ProductImage({
           className={cn(
             "h-full w-full",
             fit === "contain" ? "object-contain p-3" : "object-cover",
+            zoom && "transition-transform duration-500 group-hover:scale-105",
           )}
         />
       ) : (

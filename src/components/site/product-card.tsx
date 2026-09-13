@@ -14,6 +14,7 @@ export function ProductCard({ product }: { product: StorefrontProduct }) {
           src={product.image_url}
           fallbackSrc={productImageFallback(product.slug, product.category_slug)}
           fit="contain"
+          zoom
           alt={product.name}
           categorySlug={product.category_slug}
           rounded="rounded-none"
