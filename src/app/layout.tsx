@@ -3,10 +3,18 @@ import "./globals.css";
 import { getSiteContent } from "@/lib/queries";
 import { SITE_NAME, SITE_URL } from "@/lib/env";
 
+function safeMetadataBase(): URL | undefined {
+  try {
+    return new URL(SITE_URL);
+  } catch {
+    return undefined;
+  }
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const { seo } = await getSiteContent();
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: safeMetadataBase(),
     title: {
       default: seo.title,
       template: `%s · ${SITE_NAME}`,
